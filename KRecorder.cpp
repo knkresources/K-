@@ -2,12 +2,13 @@
 
 KRecorder::KRecorder()
 {
-
+	mFile = new QFile();
 }
 
 void KRecorder::newLog(QString file_path)
 {
-
+    this->closeLog();
+    delete mFile;
     mFile = new QFile(file_path);
 
     if(!mFile->open(QFile::WriteOnly | QFile::Text))
